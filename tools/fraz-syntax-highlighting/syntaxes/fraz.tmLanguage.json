@@ -1,0 +1,77 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Fraz",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#numerics"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#default_types"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#subject_objects"
+		},
+		{
+			"include": "#target_objects"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.operator.fraz",
+				"match": "\\b(has between|has|is between|is before|is|of|between|either|and)\\b"
+			}]
+		},
+		"numerics": {
+			"patterns": [{
+				"name": "constant.numeric.fraz",
+				"match": "[+-]?([0-9]+\\.)?[0-9]+"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.fraz",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.fraz",
+					"match": "\\\\."
+				}
+			]
+		},
+		"default_types": {
+			"patterns": [{
+				"name": "storage.type.class.fraz",
+				"match": "\\b(a datetime|character|characters)\\b"
+			}]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.fraz",
+				"match": "\\#(.)*"
+			}]
+		},
+		"subject_objects": {
+			"patterns": [{
+				"name": "entity.name.function.fraz",
+				"match": "(?<=^|\\. )([^\\.]+?)(?= (has between|has|is between|is before|is|of|between|either)\\b)"
+			  }]
+		},
+		"target_objects": {
+			"patterns": [{
+				"name": "variable.parameter.function.language.special.self.fraz",
+				"match": "(?<=^    |\\b(has between|has|is between|is before|is|of|between|either) )([^(\\.|,)]+?)(?=\\.|$|either|between|of)"
+			}]
+		}
+	},
+	"scopeName": "source.fraz"
+}

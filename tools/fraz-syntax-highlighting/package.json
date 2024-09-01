@@ -1,0 +1,25 @@
+{
+  "name": "fraz-syntax-highlighting",
+  "displayName": "Fraz Syntax Highlighting",
+  "description": "Syntax highlighting for Fraz in VS Code.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "fraz",
+      "aliases": ["Fraz", "fraz"],
+      "extensions": [".fraz"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "fraz",
+      "scopeName": "source.fraz",
+      "path": "./syntaxes/fraz.tmLanguage.json"
+    }]
+  }
+}

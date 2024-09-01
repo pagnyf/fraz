@@ -1,0 +1,8 @@
+#How many passengers come to Detroit from France?
+Sum passengers where country is France and arrival airport is Detroit
+
+#How many passengers come each month from each country to Detroit?
+Sum passengers
+    where flight arrival airport city is Detroit
+    by flight arrival datetime in month
+    by flight arrival airport country
