@@ -22,16 +22,48 @@
 		},
 		{
 			"include": "#target_objects"
+		},
+		{
+			"include": "#queries"
 		}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
+				"include": "#model_operators"
+			},
+			{
+				"include": "#query_operators"
+			}]
+		},
+		"model_operators": {
+			"patterns": [{
 				"name": "keyword.operator.fraz",
 				"match": "\\b(has between|has|is between|is before|is|of|between|either|and)\\b"
 			}]
 		},
+		"query_operators": {
+			"patterns": [{
+				"name": "keyword.operator.fraz",
+				"match": "\\b(Sum|sum)\\b"
+			}]
+		},
 		"numerics": {
+			"patterns": [{
+				"include": "#floats"
+			},
+			{
+				"include": "#datetime"
+			}
+		]
+		},
+		"datetime": {
+			"patterns": [{
+				"name": "constant.numeric.fraz",
+				"match": "TBD"
+			}]
+		},
+		"floats": {
 			"patterns": [{
 				"name": "constant.numeric.fraz",
 				"match": "[+-]?([0-9]+\\.)?[0-9]+"
@@ -70,6 +102,17 @@
 			"patterns": [{
 				"name": "variable.parameter.function.language.special.self.fraz",
 				"match": "(?<=^    |\\b(has between|has|is between|is before|is|of|between|either) )([^(\\.|,)]+?)(?=\\.|$|either|between|of)"
+			}]
+		},
+		"queries": {
+			"patterns": [{
+			  "name": "entity.name.class.fraz",
+			  "begin": "^(Sum|sum)\\b",
+			  "end": "$",
+			  "patterns": [{
+				"name": "entity.name.class.fraz",
+				"match": "([^\\.]+?)"
+			  }]
 			}]
 		}
 	},
