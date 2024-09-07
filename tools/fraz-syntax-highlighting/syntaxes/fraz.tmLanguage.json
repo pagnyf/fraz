@@ -3,6 +3,9 @@
 	"name": "Fraz",
 	"patterns": [
 		{
+			"include": "#queries"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -22,9 +25,6 @@
 		},
 		{
 			"include": "#target_objects"
-		},
-		{
-			"include": "#queries"
 		}
 	],
 	"repository": {
@@ -45,7 +45,7 @@
 		"query_operators": {
 			"patterns": [{
 				"name": "keyword.operator.fraz",
-				"match": "\\b(Sum|sum)\\b"
+				"match": "\\b(where|is|by|in|and|or)\\b"
 			}]
 		},
 		"numerics": {
@@ -60,6 +60,7 @@
 		"datetime": {
 			"patterns": [{
 				"name": "constant.numeric.datetime.fraz",
+				"comment": "Only valid month, day, hours, minutes, seconds and milliseconds are accepted. However dates existence in gregorian calendar are not checked (ie. 31 February is still valid)",
 				"match": "([0-2]\\d|3[0-1])\/([0]\\d|1[0-2])\/\\d{4}( ([0-1]\\d|2[0-3]):[0-5]\\d(:[0-5]\\d(.\\d{3})?)?)?"
 			}]
 		},
@@ -86,6 +87,12 @@
 				"match": "\\b(a datetime|characters)\\b"
 			}]
 		},
+		"query_formats": {
+			"patterns": [{
+				"name": "storage.type.class.fraz",
+				"match": "\\b(month|day|year)\\b"
+			}]
+		},
 		"comments": {
 			"patterns": [{
 				"name": "comment.line.fraz",
@@ -106,12 +113,27 @@
 		},
 		"queries": {
 			"patterns": [{
-			  "name": "entity.name.class.fraz",
-			  "begin": "^(Sum|sum)\\b",
-			  "end": "$",
+			  "name": "entity.query.content.fraz",
+			  "begin": "^(Sum|sum)\\b (.+?)(?= (where|by)|$)",
+			  "beginCaptures": {
+				"1": {
+					"name": "keyword.operator.fraz"
+				},
+				"2": {
+					"name": "entity.name.function.fraz"
+				}
+			  },
+			  "end": "$^",
+			  "comment": "End pattern be improved based on indentation and not require an empty line.",
 			  "patterns": [{
-				"name": "entity.name.class.fraz",
-				"match": "([^\\.]+?)"
+				"name": "variable.parameter.function.language.special.self.fraz",
+				"match": "(?<=\\b(where|by|and|or)\\b)(.+?)(?=\\b(is|in)\\b|$)"
+			  },
+			  {
+				"include": "#query_operators"
+			  },
+			  {
+				"include": "#query_formats"
 			  }]
 			}]
 		}
