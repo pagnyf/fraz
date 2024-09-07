@@ -1,6 +1,6 @@
-#Several text queries
-#How many passengers come to Detroit from France?
-Sum passengers where country is France and arrival airport is Detroit
+#How many French passengers come to Detroit from Germany?
+Sum passengers where country is France and arrival airport is Detroit and flight departure airport city country is Germany
+
 
 #How many passengers come each month from each country to Detroit?
 Sum passengers
