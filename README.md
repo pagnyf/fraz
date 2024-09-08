@@ -13,6 +13,24 @@ Fraz is currently in a experimental stage, format may vary between version and n
 
 As Fraz is currently in a very early stage, contributions are welcomed, but no guarantees can be given on review delay or acceptation into the current code base.
 
+# Installing Syntax Highlighting Extension
+## VSCode
+
+Prerequisites:
+- You need to have `node.js` >= `20.17.0` installed
+
+1. Install `vsce` command-line tool (Visual Studio Code Extension):
+    ```js
+    npm install -g @vscode/vsce
+    ```
+2. Package extension:
+    ```sh
+    cd tools/fraz-syntax-highlighting
+    vsce package
+    ```
+    This will create a `fraz-syntax-highlighting-{version}.vsix` file under the current directory `tools/fraz-syntax-highlighting`
+3. Under VS Code, right click on `fraz-syntax-highlighting-{version}.vsix` file name in the Explorer view on the left, then click on **Install Extension VSIX**
+
 # Developing Syntax Highlighting Extension
 ## VSCode
 

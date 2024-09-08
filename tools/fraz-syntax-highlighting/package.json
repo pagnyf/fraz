@@ -6,6 +6,10 @@
   "engines": {
     "vscode": "^1.92.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pagnyf/fraz.git"
+  },
   "categories": [
     "Programming Languages"
   ],
