@@ -101,9 +101,24 @@
 		},
 		"subject_objects": {
 			"patterns": [{
-				"name": "entity.name.function.fraz",
-				"match": "(?<=^|\\. )([^\\.]+?)(?= (has between|has|is between|is before|is|are|of|between|either)\\b)"
-			  }]
+				"name": "entity.object.subject.fraz",
+				"begin": "(?<=^\\b|\\. )",
+				"end": "(?= (has between|has|is between|is before|is|are|of|between|either)\\b)",
+				"patterns": [{
+					"include": "#subject_name_only"
+				}]
+			}]
+		},
+		"subject_name_only": {
+			"match": "(\\b(a|an) )?([^\\.]+?)",
+			"captures":{
+				"1": {
+					"name": "entity.object.article.fraz"
+				},
+				"3": {
+					"name": "entity.name.function.fraz"
+				}
+			}
 		},
 		"target_objects": {
 			"patterns": [{
@@ -111,17 +126,20 @@
 				"begin": "(?<=^    |\\b(has between|has|has:    |is between|is before|is|are|between) )",
 				"end": "(?=\\.|$|of|between|either)",
 				"patterns": [{
-					"include": "#object_name_only"
+					"include": "#target_name_only"
 				}]
 			}]
 		},
-		"object_name_only": {
-			"match": "(\\b(a|an) )?([^\\.]+?)",
+		"target_name_only": {
+			"match": "(\\b(a|an) )?(\\bmultiple\\b)?([^\\.]+?)",
 			"captures":{
 				"1": {
 					"name": "entity.object.article.fraz"
 				},
 				"3": {
+					"name": "storage.type.class.fraz"
+				},
+				"4":{
 					"name": "variable.parameter.function.language.special.self.fraz"
 				}
 			}
