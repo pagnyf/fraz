@@ -1,0 +1,3 @@
+[submodule "tools/fraz-syntax-highlighting-zed/tree-sitter-fraz"]
+	path = tools/fraz-syntax-highlighting-zed/tree-sitter-fraz
+	url = https://github.com/pagnyf/tree-sitter-fraz

@@ -1,5 +1,7 @@
 # Custom files
 test.html
+tools/fraz-syntax-highlighting-zed/tree-sitter-html/
+tools/fraz-syntax-highlighting-zed/grammars/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
