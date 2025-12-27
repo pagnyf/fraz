@@ -1,6 +1,6 @@
 # fraz-syntax-highlighting README
 
-This is the README for `fraz-syntax-highlighting` extension.
+This is the README for `fraz-syntax-highlighting` extension in VS Code.
 
 ## Features
 
@@ -22,10 +22,7 @@ This might be improved in the future.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 0.0.1
 
 First working version.
 Provides syntax highlighting for model and query definition of `.fraz` files.
-

@@ -14,6 +14,13 @@ Fraz is currently in a experimental stage, format may vary between version and n
 As Fraz is currently in a very early stage, contributions are welcomed, but no guarantees can be given on review delay or acceptation into the current code base.
 
 # Installing Syntax Highlighting Extension
+## Zed
+
+Prerequisites:
+- You need to have `rust` installed following [Zed extension development instructions](https://zed.dev/docs/extensions/developing-extensions).
+
+1. Click `Install Dev Extension` (or run `zed: install dev extension`) and select `tools/fraz-syntax-highlighting-zed` directory.
+
 ## VSCode
 
 Prerequisites:
@@ -32,9 +39,20 @@ Prerequisites:
 3. Under VS Code, right click on `fraz-syntax-highlighting-{version}.vsix` file name in the Explorer view on the left, then click on **Install Extension VSIX**
 
 # Developing Syntax Highlighting Extension
+## Zed
+
+1. Open this repository with Zed.
+2. Click `Install Dev Extension` (or run `zed: install dev extension`) and select `tools/fraz-syntax-highlighting-zed` directory.
+3. Troubleshoot by checking Zed.log (`zed: open log`)
+
 ## VSCode
 
 1. Open this repository with VSCode.
 2. Press **F5**. This will open a new VSCode window with the current extension loaded. Opening a `.fraz` file such as `examples/models/Airlines.fraz` will display the file content with syntax colored.
 3. Update syntax highlighting behaviour by editing files located in `tools/fraz-syntax-highlighting` such as `syntaxes\fraz.tmLanguage.json` or `language-configuration.json`
 4. Reload extension by pressing **Ctrl+Shift+F5** to see syntax updated according to your changes.
+
+
+# ToDo
+- Install html tree-sitter locally
+- Create tree-sitter grammar for fraz
