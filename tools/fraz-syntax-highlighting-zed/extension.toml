@@ -8,4 +8,4 @@ repository = "https://github.com/pagnyf/fraz.git"
 
 [grammars.fraz]
 repository = "https://github.com/pagnyf/tree-sitter-fraz"
-commit = "53be80e7af068b2b6b4330c1e038ff1898e3f92f"
+commit = "59477272b68180a9948ea878c5688f574cb16981"

@@ -54,5 +54,7 @@ Prerequisites:
 
 
 # ToDo
-- Install html tree-sitter locally
 - Create tree-sitter grammar for fraz
+  - Create definitions and types
+  - Create query expressions
+  - Generate basic translation to SQL
