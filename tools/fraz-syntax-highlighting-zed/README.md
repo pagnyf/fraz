@@ -24,20 +24,33 @@ tree-sitter generate grammar.js
 
 - Parse file into a syntax tree:
 ```bash
-tree-sitter parse tree-sitter-fraz/examples/basic.fraz
+cd tree-sitter-fraz
+tree-sitter parse examples/test.fraz
 ```
 
 - Test syntax highlighting:
 ```bash
-tree-sitter highlight tree-sitter-fraz/examples/basic.fraz
+cd tree-sitter-fraz
+tree-sitter highlight examples/test.fraz
 ```
 
-- Update syntax:
+- Update syntax highlighting for [parser repository `tree-sitter-fraz`](https://github.com/pagnyf/tree-sitter-fraz):
 Update `tree-sitter-fraz/queries/highlights.scm` such as:
 ```scm
 (object) @tag
 ```
-where `(object)`is type provided by parser and `@tag` is the highlight type in Zed templates
+where `(object)`is type provided by parser and `@tag` is the highlight key for tree-sitter themes.
+Tree sitter themes can be updated in config file:
+- `$XDG_CONFIG_HOME/tree-sitter/config.json` or `$HOME/.config/tree-sitter/config.json` on Unix
+- `%APPDATA%\tree-sitter\config.json` or `$HOME\AppData\Roaming\tree-sitter\config.json` on Windows
+
+
+- Update syntax highlighting for [zed extension in repository `fraz`](https://github.com/pagnyf/tree-sitter-fraz):
+Update `languages/fraz/highlights.scm` such as:
+```scm
+(object) @tag
+```
+Capturing groups (such as `@tag`) supported by Zed are different from tree sitter and listed in [Language Extensions](https://zed.dev/docs/extensions/languages#syntax-highlighting).
 
 ## Install as Dev Extension in Zed
 
@@ -46,20 +59,22 @@ In Zed:
 - Select `zed: extensions`
 - Select `fraz-syntax-highlighting-zed` as folder
 
-Update extensions with latest syntax changes:
+Update extension with latest syntax changes:
 - Regenerate parser:
 ```bash
-tree-sitter generate tree-sitter-fraz/grammar.js
+cd tree-sitter-fraz
+tree-sitter generate grammar.js
 ```
 - Commit and push [parser repository `tree-sitter-fraz`](https://github.com/pagnyf/tree-sitter-fraz) updates:
 ```bash
 cd tree-sitter-fraz
 git push origin main
 ```
-- Commit and push [`fraz` repository](https://github.com/pagnyf/fraz):
-```bash
-cd fraz
-git push origin main
+- Update `extension.toml` with latest commit id:
+```toml
+[grammars.fraz]
+repository = "https://github.com/pagnyf/tree-sitter-fraz"
+commit = "87836a94d75afe4179c391806661fdf7f5d2d6ae" 
 ```
 - Open Zed extensions, click `Rebuild` next to `Fraz Syntax Highlighting`
 
