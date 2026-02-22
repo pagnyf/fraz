@@ -18,18 +18,50 @@ This extension is built using `tree-sitter`. Refer to [Tree sitter documentation
 Within `/tree-sitter-fraz` directory, you can run the following snippets to perform basic actions:
 - Generate parser
 ```bash
+cd tree-sitter-fraz
 tree-sitter generate grammar.js
 ```
 
 - Parse file into a syntax tree:
 ```bash
-tree-sitter parse examples/basic.fraz
+tree-sitter parse tree-sitter-fraz/examples/basic.fraz
 ```
 
 - Test syntax highlighting:
 ```bash
-tree-sitter highlight examples/basic.fraz
+tree-sitter highlight tree-sitter-fraz/examples/basic.fraz
 ```
+
+- Update syntax:
+Update `tree-sitter-fraz/queries/highlights.scm` such as:
+```scm
+(object) @tag
+```
+where `(object)`is type provided by parser and `@tag` is the highlight type in Zed templates
+
+## Install as Dev Extension in Zed
+
+In Zed:
+- Press `Ctrl+Shit+P` and type `extension`.
+- Select `zed: extensions`
+- Select `fraz-syntax-highlighting-zed` as folder
+
+Update extensions with latest syntax changes:
+- Regenerate parser:
+```bash
+tree-sitter generate tree-sitter-fraz/grammar.js
+```
+- Commit and push [parser repository `tree-sitter-fraz`](https://github.com/pagnyf/tree-sitter-fraz) updates:
+```bash
+cd tree-sitter-fraz
+git push origin main
+```
+- Commit and push [`fraz` repository](https://github.com/pagnyf/fraz):
+```bash
+cd fraz
+git push origin main
+```
+- Open Zed extensions, click `Rebuild` next to `Fraz Syntax Highlighting`
 
 ## Extension Settings
 
